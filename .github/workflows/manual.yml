@@ -12,8 +12,7 @@ jobs:
 
       - name: extract wdcli
         run: |
-          tar -xzf bin/wdcli-installer-linux-x64-v1.8.25.tar.gz -C bin/
-          chmod -x bin/wdcli/bin/wdcli
+          tar xzvf bin/wdcli-installer-linux-x64-v1.8.25.tar.gz -C bin/
 
       - name: list all in bin
         run: ls -la bin/wdcli/bin/
