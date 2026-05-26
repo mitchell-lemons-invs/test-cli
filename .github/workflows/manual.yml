@@ -8,4 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: extract wdcli
+        run: |
+          tar -xzf bin/wdcli-installer-linux-x64-v1.8.25.tar.gz -C bin/
+          chmod -x bin/wdcli/bin/wdcli
+
+      - name: run version
+        run: bin/wdcli/bin/wdcli version
