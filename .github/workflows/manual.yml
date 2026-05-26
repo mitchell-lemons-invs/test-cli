@@ -15,3 +15,11 @@ jobs:
 
       - name: Dump Version
         run: bin/wdcli/bin/wdcli version
+
+      - name: Export Environment Variables
+        env:
+          WDCLI_CLIENT_ID: ${{ vars.SystemUserClientId }}
+          WDCLI_CLIENT_SECRET: ${{ secrets.SystemUserClientSecret }}
+
+      - name: Authenticate
+        run: bin/wdcli/bin/wdcli auth login --system-user
