@@ -1,0 +1,27 @@
+name: Docker-Runner Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/mitchell-lemons-invs/wdcli-runner:1.8.25-rc-20260526_174748
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Dump Version
+        run: wdcli version
+
+      - name: Export Environment Variables
+        run: |
+          echo "WDCLI_CLIENT_ID=${{ vars.SystemUserClientId }}" >> $GITHUB_ENV
+          echo "WDCLI_CLIENT_SECRET=${{ secrets.SystemUserClientSecret }}" >> $GITHUB_ENV
+
+      - name: Authenticate
+        run: wdcli auth login --system-user
