@@ -11,8 +11,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: extract wdcli
-        run: |
-          tar xzvf bin/wdcli-installer-linux-x64-v1.8.25.tar.gz -C bin/
+        run: tar xzvf bin/wdcli-installer-linux-x64-v1.8.25.tar.gz -C bin/
 
-      - name: list all in bin
-        run: ls -la bin/wdcli/bin/
+      - name: Dump Version
+        run: bin/wdcli/bin/wdcli version
