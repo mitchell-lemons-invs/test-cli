@@ -1,0 +1,21 @@
+{
+  "id": "mllTestingGithubActions_nykbdn",
+  "languages": [
+    {
+      "code": "en-US",
+      "description": "English"
+    }
+  ],
+  "siteAuth": {
+    "authTypes": [
+      {
+        "scheme": "SSO",
+        "id": "sso"
+      }
+    ]
+  },
+  "siteId": "mllTestingGithubActions_nykbdn",
+  "cdnEnabled": true,
+  "siteProperties": [ ],
+  "applicationId": "mllTestingGithubActions_nykbdn"
+}

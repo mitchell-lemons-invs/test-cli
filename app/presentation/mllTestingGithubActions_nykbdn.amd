@@ -1,0 +1,13 @@
+{
+  "appProperties": [ ],
+  "tasks": [
+    {
+      "id": "homePage",
+      "routingPattern": "/",
+      "page": {
+        "id": "homePage"
+      }
+    }
+  ],
+  "applicationId": "mllTestingGithubActions_nykbdn"
+}
