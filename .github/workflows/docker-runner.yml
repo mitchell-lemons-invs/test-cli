@@ -36,4 +36,4 @@ jobs:
         run: wdcli app upload app/ -f json
 
       - name: Login to tenant
-        run: wdcli tenant login ${{ vars.TenantShortId }} --ci
+        run: wdcli tenant login ${{ vars.WcpDevTenantAlias }} --ci
