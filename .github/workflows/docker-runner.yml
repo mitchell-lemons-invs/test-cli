@@ -25,3 +25,6 @@ jobs:
 
       - name: Authenticate
         run: wdcli auth login --system-user
+
+      - name: Ensure Correct Account
+        run: wdcli account switch ${{ vars.AccountShortId }}
