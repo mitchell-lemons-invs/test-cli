@@ -15,7 +15,10 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Dump Version
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Dump WDCLI Version
         run: wdcli version
 
       - name: Export Environment Variables
@@ -27,4 +30,10 @@ jobs:
         run: wdcli auth login --system-user
 
       - name: Ensure Correct Account
-        run: wdcli account switch ${{ vars.AccountShortId }}
+        run: wdcli account switch ${{ vars.AccountShortId }} --ci -f json
+
+      - name: Upload application
+        run: wdcli app upload app/ -f json
+
+      - name: Login to tenant
+        run: wdcli tenant login ${{ vars.TenantShortId }} --ci
