@@ -1,0 +1,30 @@
+name: Arcane Auditor Test App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/mitchell-lemons-invs/arcaneauditor-runner:2.0.0-rc-20260528_160251
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Dump Version
+        run: ArcaneAuditorCLI --version
+
+      - name: Run ArcaneAuditor
+        run: |
+          ArcaneAuditorCLI review-app app/ | tee /tmp/aa_output.txt
+          if grep -qE "Issues found: [1-9]" /tmp/aa_output.txt; then
+            echo "::error::ArcaneAuditor found issues. See output above."
+            exit 1
+          fi

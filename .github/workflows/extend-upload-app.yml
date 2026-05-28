@@ -1,4 +1,4 @@
-name: Docker-Runner Workflow
+name: Upload & Deploy App
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ jobs:
       contents: read
       packages: read
     container:
-      image: ghcr.io/mitchell-lemons-invs/wdcli-runner:1.8.25-rc-20260526_174748
+      image: ghcr.io/mitchell-lemons-invs/wdcli-runner:1.8.25
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
